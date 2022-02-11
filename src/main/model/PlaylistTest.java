@@ -31,6 +31,18 @@ public class PlaylistTest {
     }
 
     @Test
+    void testSetPlaylistName() {
+        testPlaylist.setPlaylistName("renamed");
+        assertEquals("renamed", testPlaylist.getPlaylistName());
+    }
+
+    @Test
+    void testSetPlaylistDescription() {
+        testPlaylist.setDescription("new desc!");
+        assertEquals("new desc!", testPlaylist.getDescription());
+    }
+
+    @Test
     void testAddSongValid() {
         testPlaylist.addSong("Ivy", "Frank Ocean", "Blonde", "R&B");
         assertEquals("Ivy", testPlaylist.getSongCollection().get(0).getName());
@@ -42,7 +54,7 @@ public class PlaylistTest {
         testPlaylist.addSong("777", "Joji", "Nectar", "R&B");
         assertEquals(2, testPlaylist.getNumSongs());
 
-        testPlaylist.removeSong("777", "Joji");
+        testPlaylist.removeSong("777", "Joji", "Nectar", "R&B");
         assertEquals(1, testPlaylist.getNumSongs());
     }
 
@@ -52,7 +64,7 @@ public class PlaylistTest {
         testPlaylist.addSong("777", "Joji", "Nectar", "R&B");
         assertEquals(2, testPlaylist.getNumSongs());
 
-        testPlaylist.removeSong("77", "Joji");
+        testPlaylist.removeSong("77", "Joji", "Nectar", "R&B");
         assertEquals(2, testPlaylist.getNumSongs());
     }
 
@@ -63,9 +75,10 @@ public class PlaylistTest {
         testPlaylist.addSong("777", "Joji", "Nectar", "R&B");
         assertEquals(3, testPlaylist.getNumSongs());
 
-        testPlaylist.removeSong("777", "Joji");
+        testPlaylist.removeSong("777", "Joji", "Nectar", "R&B");
         assertEquals(2, testPlaylist.getNumSongs());
     }
+
 
     @Test
     void testRemoveSongFailBothInvalidFields() {
@@ -73,7 +86,7 @@ public class PlaylistTest {
         testPlaylist.addSong("777", "Joji", "Nectar", "R&B");
         assertEquals(2, testPlaylist.getNumSongs());
 
-        testPlaylist.removeSong("Wrong", "Inputs");
+        testPlaylist.removeSong("Wrong", "Inputs", "All", "Around");
         assertEquals(2, testPlaylist.getNumSongs());
     }
 

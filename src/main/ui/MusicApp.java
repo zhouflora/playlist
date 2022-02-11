@@ -6,7 +6,9 @@ import model.Song;
 import java.util.List;
 import java.util.Scanner;
 
-// Music organizer application
+// The console interface for a music organizer application
+// Many methods in this class are taken from/inspired by the Teller App
+// Reference to that app can be found here: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 public class MusicApp {
     private Playlist favourites;
     private Playlist playlist1;
@@ -21,11 +23,12 @@ public class MusicApp {
     private Playlist playlist10;
     private Scanner input;
 
+    // EFFECTS: start the console
     public MusicApp() {
         runMusicApp();
     }
 
-    // Code taken from AccountNotRobust - TellerApp.java
+    // Code taken directly from AccountNotRobust - TellerApp Class
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runMusicApp() {
@@ -50,7 +53,7 @@ public class MusicApp {
         System.out.println("\nGoodbye!");
     }
 
-    // Code revamped from AccountNotRobust - TellerApp.java
+    // Code revamped from AccountNotRobust - TellerApp Class
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
@@ -69,6 +72,7 @@ public class MusicApp {
         }
     }
 
+    // Method revamped from AccountNotRobust - TellerApp Class
     // MODIFIES: this
     // EFFECTS: initializes playlists
     private void initialize() {
@@ -87,7 +91,7 @@ public class MusicApp {
         input.useDelimiter("\n");
     }
 
-    // Code taken from AccountNotRobust - TellerApp.java
+    // Code taken from AccountNotRobust - TellerApp Class
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nSelect from:");
@@ -127,12 +131,16 @@ public class MusicApp {
         String name = input.next();
         System.out.print("\n Enter artist of song you wish to remove: ");
         String artist = input.next();
+        System.out.print("\n Enter album to which the song you wish to remove belongs: ");
+        String album = input.next();
+        System.out.print("\n Enter genre of song you wish to remove: ");
+        String genre = input.next();
 
-        selected.removeSong(name, artist);
+        selected.removeSong(name, artist, album, genre);
         System.out.print("\n Song has been successfully removed! \n");
     }
 
-    // EFFECTS: display names of songs within playlist
+    // EFFECTS: display names of all songs that have been added to that playlist
     public void viewPlaylistOverview() {
         Playlist selected = selectPlaylist();
         List<String> display = selected.viewPlaylist(selected);
@@ -172,7 +180,7 @@ public class MusicApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: change name of selected playlist
+    // EFFECTS: change description of selected playlist
     public void editDescription() {
         System.out.println("\n Change playlist description?");
         Playlist selected = selectPlaylist();
@@ -185,9 +193,9 @@ public class MusicApp {
     }
 
 
-    // Code inspired by selectAccount() in AccountNotRobust - TellerApp.java
-    // EFFECTS: prompts user to select between liked songs or new playlist
-    // and returns it
+    // Code inspired by selectAccount() in AccountNotRobust - TellerApp
+    // EFFECTS: prompts user to select between available playlists
+    // and returns selection
     private Playlist selectPlaylist() {
         String selection = ""; //force entry into loop
 
@@ -206,7 +214,7 @@ public class MusicApp {
 
     }
 
-    // EFFECTS: print out full playlist names for user
+    // EFFECTS: print out full playlist names for user readability
     public void playlistDefinitions() {
         System.out.println("\nType...");
         System.out.print("\t f for " + favourites.getPlaylistName());
