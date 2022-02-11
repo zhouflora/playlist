@@ -146,7 +146,7 @@ public class MusicApp {
         List<String> display = selected.viewPlaylist(selected);
 
         System.out.printf("\n" + selected.getPlaylistName());
-        System.out.printf(selected.getDescription());
+        System.out.printf("\n" + selected.getDescription());
         System.out.printf("\n The songs in this playlist are " + String.valueOf(display));
 
         System.out.print("\n Would you like to view the details of a particular song?");
@@ -174,7 +174,7 @@ public class MusicApp {
         Playlist selected = selectPlaylist();
         System.out.println("What should the new name be?");
         String changeTo = input.next();
-        selected.setPlaylistName(input.next());
+        selected.setPlaylistName(changeTo);
 
         System.out.printf("Playlist name changed to:\n" + selected.getPlaylistName());
     }
@@ -186,9 +186,9 @@ public class MusicApp {
         Playlist selected = selectPlaylist();
         System.out.println("What should the new description be?");
         String changeTo = input.next();
-        selected.setPlaylistName(input.next());
+        selected.setDescription(changeTo);
 
-        System.out.printf("Description has been successfully changed to: \n"
+        System.out.printf("\n Description has been successfully changed to: \n"
                 + selected.getDescription());
     }
 
