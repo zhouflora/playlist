@@ -1,0 +1,25 @@
+{
+    "songs": [
+        {
+            "songName": "Cleopatra",
+            "artist": "The Lumineers",
+            "album": "Cleopatra",
+            "genre": "Indie Folk"
+        },
+        {
+            "songName": "777",
+            "artist": "Joji",
+            "album": "Nectar",
+            "genre": "R&B"
+        },
+        {
+            "songName": "Ivy",
+            "artist": "Frank Ocean",
+            "album": "Blonde",
+            "genre": "Alternative"
+        }
+    ],
+    "numSongs": 3,
+    "description": "",
+    "playlistName": "new playlist 1"
+}

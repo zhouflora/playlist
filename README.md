@@ -15,8 +15,11 @@ taste. I wanted to create an application for people with a similar passion who w
 
 ## User Stories
 As a user, I will be able to:
-* add songs to different playlists of my choosing
-* remove songs from any playlist I've added it to
-* see a high-level overview of my playlists, particularly the 
-name of my playlist, and the titles of all the songs I've added to it
+* add songs to my playlist and store details about its artist, 
+album, and genre
+* remove songs from my playlist
+* see a high-level overview of my playlist, particularly its name, 
+description, and the titles/artists of all the songs I've added to it
 * retreive the full details of a song when viewing my playlists
+* save my playlists to file
+* reload playlists from file

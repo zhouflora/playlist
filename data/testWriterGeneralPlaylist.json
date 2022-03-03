@@ -1,0 +1,25 @@
+{
+    "songs": [
+        {
+            "songName": "Cleopatra",
+            "artist": "The Lumineers",
+            "album": "Cleopatra",
+            "genre": "Indie Folk"
+        },
+        {
+            "songName": "Eventually",
+            "artist": "Tama Impala",
+            "album": "Current",
+            "genre": "Alternative"
+        },
+        {
+            "songName": "Heat Lightning",
+            "artist": "Mitski",
+            "album": "Laurel Hell",
+            "genre": "Indie"
+        }
+    ],
+    "numSongs": 3,
+    "description": "",
+    "playlistName": "Favourites"
+}

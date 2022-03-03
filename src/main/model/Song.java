@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 // Represents a song having a name, an artist, an album, and genre
 public class Song {
 
@@ -32,5 +34,15 @@ public class Song {
 
     public String getGenre() {
         return genre;
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("songName", name);
+        json.put("artist", artist);
+        json.put("album", album);
+        json.put("genre", genre);
+
+        return json;
     }
 }

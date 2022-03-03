@@ -1,12 +1,16 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.AbstractList;
 import java.util.LinkedList;
 import java.util.List;
 
 // Represents a playlist having a name, description, number of songs, and list of songs,
 // and all the edits that can be made to a playlist
-public class Playlist {
+public class Playlist implements Writable {
 
     private String playlistName;
     private String description;
@@ -48,9 +52,9 @@ public class Playlist {
         this.description = desc;
     }
 
-    // REQUIRES: song name and artist cannot be empty strings
+    // REQUIRES: song name and artist cannot be empty strings, no dupes
     // MODIFIES: this
-    // EFFECTS: adds a song to a playlist, duplicates allowed
+    // EFFECTS: adds a song to a playlist
     public void addSong(String name, String artist, String album, String genre) {
         Song song = new Song(name, artist, album, genre);
         collection.add(song);
@@ -101,4 +105,24 @@ public class Playlist {
         return listOfSongNames;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("playlistName", playlistName);
+        json.put("description", description);
+        json.put("numSongs", numSongs);
+        json.put("songs", songsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns songs in this workroom as a JSON array
+    private JSONArray songsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Song song : collection) {
+            jsonArray.put(song.toJson());
+        }
+
+        return jsonArray;
+    }
 }

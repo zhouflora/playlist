@@ -1,0 +1,13 @@
+{
+  "playlistName": "Favourites",
+  "description": "",
+  "numSongs": 1,
+  "songs": [
+    {
+      "songName": "Cleopatra",
+      "artist": "The Lumineers",
+      "album": "Cleopatra",
+      "genre": "Indie Folk"
+    }
+  ]
+}
