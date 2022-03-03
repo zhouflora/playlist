@@ -1,5 +1,6 @@
 package persistence;
 
+import model.Playlist;
 import model.Song;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,5 +11,9 @@ public class JsonTest {
         assertEquals(artist, song.getArtist());
         assertEquals(album, song.getAlbum());
         assertEquals(genre, song.getGenre());
+    }
+
+    protected void checkDescription(String desc, Playlist playlist) {
+        assertEquals(desc, playlist.getDescription());
     }
 }

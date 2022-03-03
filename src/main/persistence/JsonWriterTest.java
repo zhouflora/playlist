@@ -5,7 +5,6 @@ import model.Song;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -57,7 +56,6 @@ public class JsonWriterTest extends JsonTest {
             JsonReader reader = new JsonReader("./data/testWriterGeneralPlaylist.json");
             playlist = reader.read();
             assertEquals("Favourites", playlist.getPlaylistName());
-            List<Song> songs = playlist.getSongCollection();
             assertEquals(3, playlist.getNumSongs());
 
             Song song1 = new Song("Cleopatra", "The Lumineers", "Cleopatra", "Indie Folk");
@@ -66,6 +64,7 @@ public class JsonWriterTest extends JsonTest {
             checkSong("Cleopatra", "The Lumineers", "Cleopatra", "Indie Folk", song1);
             checkSong("Eventually", "Tama Impala", "Current", "Alternative", song2);
             checkSong("Heat Lightning", "Mitski", "Laurel Hell", "Indie", song3);
+            checkDescription("", playlist);
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");

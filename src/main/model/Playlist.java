@@ -64,14 +64,10 @@ public class Playlist implements Writable {
     // MODIFIES: this
     // EFFECTS: removes a song (only once in the case of duplicates) from a playlist
     // and adjusts the count of songs still in the playlist accordingly
-    public void removeSong(String name, String artist, String album, String genre) {
-        for (Song s : collection) {
-            if (s.getName().equals(name) && s.getArtist().equals(artist)
-                    && s.getAlbum().equals(album) && s.getGenre().equals(genre)) {
-                collection.remove(s);
-                numSongs = numSongs - 1;
-            }
-        }
+    public void removeSong(int position) {
+        position -= position;
+        collection.remove(position);
+        numSongs = numSongs - 1;
     }
 
     // EFFECTS: from a given name, shows the details of the corresponding song,

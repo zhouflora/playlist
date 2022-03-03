@@ -30,6 +30,7 @@ public class JsonReaderTest extends JsonTest {
             Playlist playlist = reader.read();
             assertEquals("Favourites", playlist.getPlaylistName());
             assertEquals(0, playlist.getSongCollection().size());
+            checkDescription("", playlist);
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -46,6 +47,7 @@ public class JsonReaderTest extends JsonTest {
             Song testSong = new Song("Cleopatra", "The Lumineers", "Cleopatra", "Indie Folk");
             checkSong("Cleopatra", "The Lumineers", "Cleopatra", "Indie Folk",
                     testSong);
+            checkDescription("Test Description", playlist);
 
         } catch (IOException e) {
             fail("Couldn't read from file");

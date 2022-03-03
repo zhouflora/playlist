@@ -32,11 +32,11 @@ public class MusicApp {
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runMusicApp() {
-        System.out.println("Welcome to your very own Music Organizer!");
         boolean keepGoing = true;
         String command;
-        input = new Scanner(System.in);
 
+        System.out.println("Welcome to your very own Music Organizer!");
+        init();
         while (keepGoing) {
             displayMenu();
             command = input.next();
@@ -50,6 +50,14 @@ public class MusicApp {
         }
 
         System.out.println("\nGoodbye!");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: initializes schedule and Scanner
+    private void init() {
+        playlist = new Playlist("Favourites");
+        input = new Scanner(System.in);
+        input.useDelimiter("\n");
     }
 
     // Code revamped from AccountNotRobust - TellerApp Class
@@ -134,17 +142,15 @@ public class MusicApp {
     // MODIFIES: this
     // EFFECTS: remove song from chosen playlist
     public void removeSong() {
-        System.out.print("\n Enter name of song you wish to remove: ");
-        String name = input.next();
-        System.out.print("\n Enter artist of song you wish to remove: ");
-        String artist = input.next();
-        System.out.print("\n Enter album to which the song you wish to remove belongs: ");
-        String album = input.next();
-        System.out.print("\n Enter genre of song you wish to remove: ");
-        String genre = input.next();
+        System.out.print("\n Enter the number of the song you'd like removed: ");
+        Integer position = input.nextInt();
 
-        playlist.removeSong(name, artist, album, genre);
-        System.out.print("\n Song has been successfully removed! \n");
+        try {
+            playlist.removeSong(position);
+            System.out.print("\n Song has been successfully removed! \n");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Song # is invalid");
+        }
     }
 
     // EFFECTS: display names of all songs that have been added to that playlist
@@ -159,6 +165,11 @@ public class MusicApp {
                     + playlist.getSongCollection().get(i).getArtist());
         }
 
+        displaySongDetails();
+    }
+
+    // EFFECTS: display all song details of selected song
+    private void displaySongDetails() {
         System.out.print("\n Would you like to view the details of a particular song?");
         System.out.print("\n y or n\n");
         String result = input.next();
@@ -171,32 +182,35 @@ public class MusicApp {
                     + "\n Artist: " + song.getArtist()
                     + "\n Album: " + song.getAlbum()
                     + "\n Genre: " + song.getGenre() + "\n");
-        } else if (result != "n") {
+        } else if (result.equals("n")) {
+            System.out.println("What else would you like to do?");
+        } else {
             System.out.println("Selection not valid...");
         }
     }
 
+
     // MODIFIES: this
     // EFFECTS: change name of selected playlist
     public void changeName() {
-        System.out.println("\nChange playlist name?");
+        System.out.println("You have opted to change the playlist description");
         System.out.println("What should the new name be?");
         String changeTo = input.next();
         playlist.setPlaylistName(changeTo);
 
-        System.out.printf("Playlist name changed to:\n" + playlist.getPlaylistName());
+        System.out.printf("\n Playlist name changed to:\n" + playlist.getPlaylistName());
     }
 
     // MODIFIES: this
     // EFFECTS: change description of selected playlist
     public void editDescription() {
-        System.out.println("\n Change playlist description?");
+        System.out.println("You have opted to change the playlist description");
         System.out.println("What should the new description be?");
         String changeTo = input.next();
         playlist.setDescription(changeTo);
 
         System.out.printf("\n Description has been successfully changed to: \n"
-                + playlist.getDescription());
+                + "\t" + playlist.getDescription());
     }
 
 }

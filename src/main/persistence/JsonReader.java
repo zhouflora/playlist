@@ -44,23 +44,18 @@ public class JsonReader {
     // EFFECTS: parses Playlist from JSON object and returns it
     private Playlist parsePlaylist(JSONObject jsonObject) {
         String name = jsonObject.getString("playlistName");
-        String description = jsonObject.getString("description");
-        Integer numSongs = jsonObject.getInt("numSongs");
         Playlist playlist = new Playlist(name);
         addSongs(playlist, jsonObject);
+        addDescription(playlist, jsonObject);
 
-
-        //     addDescription(playlist, jsonObject);
-        //        addNumSongs(playlist, jsonObject);
         return playlist;
     }
-
 
     // MODIFIES: playlist
     // EFFECTS: parses song from JSON object and adds it to workroom
     private void addDescription(Playlist playlist, JSONObject jsonObject) {
         String description = jsonObject.getString("description");
-
+        playlist.setDescription(description);
     }
 
     // MODIFIES: playlist
@@ -82,7 +77,5 @@ public class JsonReader {
             addSong(playlist, nextSong);
         }
     }
-
-
 
 }
