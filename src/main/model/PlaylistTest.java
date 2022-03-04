@@ -63,7 +63,7 @@ public class PlaylistTest {
     void testRemoveSongDuplicates() {
         testPlaylist.addSong("Ivy", "Frank Ocean", "Blonde", "R&B");
         testPlaylist.addSong("777", "Joji", "Nectar", "R&B");
-        testPlaylist.addSong("777", "Joji", "Nectar", "R&B");
+        testPlaylist.addSong("Cleopatra", "The Lumineers", "Cleopatra", "R&B");
         assertEquals(3, testPlaylist.getNumSongs());
 
         testPlaylist.removeSong(new Song("777", "Joji", "Nectar", "R&B"));
