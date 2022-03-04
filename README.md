@@ -21,5 +21,5 @@ album, and genre
 * see a high-level overview of my playlist, particularly its name, 
 description, and the titles/artists of all the songs I've added to it
 * retreive the full details of a song when viewing my playlists
-* save my playlists to file
-* reload playlists from file
+* save my playlist to file
+* reload saved playlist from file

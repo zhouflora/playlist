@@ -21,7 +21,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // Based on public WorkRoom read() thows IDException {...}
+    // Based on public Playlist read() thows IDException {...}
     // EFFECTS: reads playlist from file and returns it;
     // throws IDException if error occurs reading data from file
     public Playlist read() throws IOException {
@@ -30,6 +30,8 @@ public class JsonReader {
         return parsePlaylist(jsonObject);
     }
 
+    // Method taken from code in JSONReader class, repo found here:
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
     // EFFECTS: reads source file as Playlist and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
@@ -59,7 +61,7 @@ public class JsonReader {
     }
 
     // MODIFIES: playlist
-    // EFFECTS: parses song from JSON object and adds it to workroom
+    // EFFECTS: parses song from JSON object and adds it to playlist
     private void addSong(Playlist playlist, JSONObject jsonObject) {
         String songName = jsonObject.getString("songName");
         String artist = jsonObject.getString("artist");
@@ -69,7 +71,7 @@ public class JsonReader {
     }
 
     // MODIFIES: playlist
-    // EFFECTS: parses songs from JSON object and adds them to workroom
+    // EFFECTS: parses songs from JSON object and adds them to playlist
     private void addSongs(Playlist playlist, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("songs");
         for (Object json : jsonArray) {
