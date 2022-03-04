@@ -17,9 +17,15 @@
             "artist": "tame impala",
             "album": "currently",
             "genre": "alternative"
+        },
+        {
+            "songName": "space song",
+            "artist": "beach house",
+            "album": "depression cherry",
+            "genre": "indie"
         }
     ],
-    "numSongs": 3,
+    "numSongs": 4,
     "description": "best of the best!!",
     "playlistName": "my favourite songs"
 }

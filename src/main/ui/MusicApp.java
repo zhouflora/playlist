@@ -7,6 +7,7 @@ import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 // The console interface for a music organizer application
@@ -143,7 +144,7 @@ public class MusicApp {
     // EFFECTS: remove song from chosen playlist
     public void removeSong() {
         System.out.print("\n Enter the number of the song you'd like removed: ");
-        Integer position = input.nextInt();
+        int position = input.nextInt();
 
         try {
             playlist.removeSong(position);
@@ -177,11 +178,15 @@ public class MusicApp {
         if (result.equals("y")) {
             System.out.print("\n Please type the name of the song you would like to view\n");
             String name = input.next();
-            Song song = playlist.getSongDetails(name);
-            System.out.print("\n Song name: " + song.getName()
-                    + "\n Artist: " + song.getArtist()
-                    + "\n Album: " + song.getAlbum()
-                    + "\n Genre: " + song.getGenre() + "\n");
+            if (songExists(name, playlist)) {
+                Song song = playlist.getSongDetails(name);
+                System.out.print("\n Song name: " + song.getName()
+                        + "\n Artist: " + song.getArtist()
+                        + "\n Album: " + song.getAlbum()
+                        + "\n Genre: " + song.getGenre() + "\n");
+            } else {
+                System.out.println("Song title not valid...");
+            }
         } else if (result.equals("n")) {
             System.out.println("What else would you like to do?");
         } else {
@@ -189,6 +194,12 @@ public class MusicApp {
         }
     }
 
+    // EFFECTS: returns true if input matches the name of a song that exists
+    // in the collection
+    private boolean songExists(String input, Playlist playlist) {
+        List<String> songs = playlist.viewPlaylist(playlist);
+        return songs.contains(input);
+    }
 
     // MODIFIES: this
     // EFFECTS: change name of selected playlist
