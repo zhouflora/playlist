@@ -145,9 +145,10 @@ public class MusicApp {
     public void removeSong() {
         System.out.print("\n Enter the number of the song you'd like removed: ");
         int position = input.nextInt();
+        Song song = playlist.getSongCollection().get(position - 1);
 
         try {
-            playlist.removeSong(position);
+            playlist.removeSong(song);
             System.out.print("\n Song has been successfully removed! \n");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Song # is invalid");

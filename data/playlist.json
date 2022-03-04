@@ -1,12 +1,6 @@
 {
     "songs": [
         {
-            "songName": "cleopatra",
-            "artist": "the lumineers",
-            "album": "cleopatra",
-            "genre": "indie folk"
-        },
-        {
             "songName": "washing machine heart",
             "artist": "mitski",
             "album": "be the cowboy",
@@ -23,9 +17,21 @@
             "artist": "beach house",
             "album": "depression cherry",
             "genre": "indie"
+        },
+        {
+            "songName": "writer in the dark",
+            "artist": "lorde",
+            "album": "melodrama",
+            "genre": "melogenre"
+        },
+        {
+            "songName": "cleopatra",
+            "artist": "the lumineers",
+            "album": "cleopatra",
+            "genre": "indie folk"
         }
     ],
-    "numSongs": 4,
+    "numSongs": 5,
     "description": "best of the best!!",
     "playlistName": "my favourite songs"
 }

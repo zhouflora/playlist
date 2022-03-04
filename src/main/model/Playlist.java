@@ -62,11 +62,10 @@ public class Playlist implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: removes a song (only once in the case of duplicates) from a playlist
+    // EFFECTS: removes a song from a playlist
     // and adjusts the count of songs still in the playlist accordingly
-    public void removeSong(int position) {
-        position -= position;
-        collection.remove(position);
+    public void removeSong(Song song) {
+        collection.remove(song);
         numSongs = numSongs - 1;
     }
 

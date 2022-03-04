@@ -54,7 +54,7 @@ public class PlaylistTest {
         testPlaylist.addSong("777", "Joji", "Nectar", "R&B");
         assertEquals(2, testPlaylist.getNumSongs());
 
-        testPlaylist.removeSong(1);
+        testPlaylist.removeSong(new Song("Ivy", "Frank Ocean", "Blonde", "R&B"));
         assertEquals(1, testPlaylist.getNumSongs());
         assertEquals("777", testPlaylist.getSongCollection().get(0).getName());
     }
@@ -66,7 +66,7 @@ public class PlaylistTest {
         testPlaylist.addSong("777", "Joji", "Nectar", "R&B");
         assertEquals(3, testPlaylist.getNumSongs());
 
-        testPlaylist.removeSong(2);
+        testPlaylist.removeSong(new Song("777", "Joji", "Nectar", "R&B"));
         assertEquals(2, testPlaylist.getNumSongs());
         assertEquals("777", testPlaylist.getSongCollection().get(1).getName());
     }
