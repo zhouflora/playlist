@@ -24,10 +24,14 @@ public class MusicAppGUI extends JFrame {
     private JButton loadButton;
     private JButton displaySongsButton;
     private JTextArea showSongs;
-    private JTextField userInputS = new JTextField();
-    private JTextField userInputArt = new JTextField();
-    private JTextField userInputAlb = new JTextField();
-    private JTextField userInputG = new JTextField();
+    private JButton submitSong = new JButton("Submit");
+    private JButton submitArtist = new JButton("Submit");
+    private JButton submitAlbum = new JButton("Submit");
+    private JButton submitGenre = new JButton("Submit");
+    private JTextField userInputS = new JTextField(10);
+    private JTextField userInputArt = new JTextField(10);
+    private JTextField userInputAlb = new JTextField(10);
+    private JTextField userInputG = new JTextField(10);
     private String songNameInput;
     private String artistNameInput;
     private String albumNameInput;
@@ -41,6 +45,7 @@ public class MusicAppGUI extends JFrame {
     private static JsonWriter jsonWriter;
     private static JsonReader jsonReader;
 
+    // EFFECTS: runs necessary fields and constructs the UI
     public MusicAppGUI() {
         playlist = new Playlist("Favourites");
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -68,39 +73,73 @@ public class MusicAppGUI extends JFrame {
     }
 
 
-    /**
-     * Helper to add control buttons.
-     */
+    //  EFFECTS: Helper to add control buttons.
     private void addButtonPanel() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(5, 3));
 
-        buttonPanel.add(new JLabel("Enter song name"));
-        buttonPanel.add(userInputS);
-        buttonPanel.add(new JButton("Submit"));
-        songNameInput = userInputS.getText();
-
-        buttonPanel.add(new JLabel("Enter artist name"));
-        buttonPanel.add(userInputArt);
-        buttonPanel.add(new JButton("Submit"));
-        artistNameInput = userInputArt.getText();
-
-        buttonPanel.add(new JLabel("Enter album name"));
-        buttonPanel.add(userInputAlb);
-        buttonPanel.add(new JButton("Submit"));
-        albumNameInput = userInputAlb.getText();
-
-        buttonPanel.add(new JLabel("Enter genre name"));
-        buttonPanel.add(userInputG);
-        buttonPanel.add(new JButton("Submit"));
-        genreNameInput = userInputG.getText();
+        songNameButtons(buttonPanel);
+        artistButtons(buttonPanel);
+        albumButtons(buttonPanel);
+        genreButtons(buttonPanel);
+        addSong();
 
         buttonPanel.add(saveButton());
         buttonPanel.add(loadButton());
 
         controlPanel.add(buttonPanel, BorderLayout.WEST);
-        addSong();
-        desktop.repaint();
+    }
+
+    // EFFECTS: Helper to create buttons for adding song name
+    private void songNameButtons(JPanel buttonPanel) {
+        buttonPanel.add(new JLabel("Enter song name"));
+        buttonPanel.add(userInputS);
+        buttonPanel.add(submitSong);
+        submitSong.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setSongName(userInputS.getText());
+            }
+        });
+    }
+
+    // EFFECTS: Helper to create buttons for adding song artist
+    public void artistButtons(JPanel buttonPanel) {
+        buttonPanel.add(new JLabel("Enter artist name"));
+        buttonPanel.add(userInputArt);
+        buttonPanel.add(submitArtist);
+        submitArtist.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setArtist(userInputArt.getText());
+            }
+        });
+    }
+
+    // EFFECTS: Helper to create buttons for adding song album
+    public void albumButtons(JPanel buttonPanel) {
+        buttonPanel.add(new JLabel("Enter album name"));
+        buttonPanel.add(userInputAlb);
+        buttonPanel.add(submitAlbum);
+        submitArtist.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setSongAlbum(userInputAlb.getText());
+            }
+        });
+    }
+
+    // EFFECTS: Helper to create buttons for adding song genre
+    public void genreButtons(JPanel buttonPanel) {
+        buttonPanel.add(new JLabel("Enter genre name"));
+        buttonPanel.add(userInputG);
+        buttonPanel.add(submitGenre);
+        submitGenre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setSongGenre(userInputG.getText());
+            }
+        });
     }
 
     // EFFECTS: allows user to save their playlist and any edits made to songs
@@ -148,6 +187,9 @@ public class MusicAppGUI extends JFrame {
         try {
             playlist = jsonReader.read();
             System.out.println("Loaded " + playlist.getPlaylistName() + " from " + JSON_STORE);
+            ImageIcon image = new ImageIcon("./data/musical cat.jpg");
+            JLabel imageLabel = new JLabel(image);
+            controlPanel.add(imageLabel);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
             ImageIcon image = new ImageIcon("./data/crying cat.jpg");
@@ -177,37 +219,67 @@ public class MusicAppGUI extends JFrame {
         String songs = "";
 
         for (int i = 0; i < playlist.getSongCollection().size(); i++) {
-            songs += (i + 1) + playlist.getSongCollection().get(i).getName() + " - "
+            songs += (i + 1) + " " + playlist.getSongCollection().get(i).getName() + " - "
                     + playlist.getSongCollection().get(i).getArtist() + ":\n";
         }
         showSongs.setText(songs);
+
+        ImageIcon image = new ImageIcon("./data/musical cat.jpg");
+        JLabel imageLabel = new JLabel(image);
+        imageLabel.setBounds(700, 0, 50, 50);
+        imageLabel.setVisible(true);
+        desktop.add(imageLabel, BorderLayout.PAGE_END);
     }
 
     // EFFECTS: adds new song to playlist
     private void addSong() {
-        playlist.addSong(songNameInput, artistNameInput, albumNameInput, genreNameInput);
+        playlist.addSong(getSongName(), getArtist(), getSongAlbum(), getSongGenre());
+        desktop.repaint();
+        desktop.revalidate();
+        controlPanel.repaint();
+        controlPanel.revalidate();
     }
 
-    /**
-     * Helper to centre main application window on desktop
-     */
+    // EFFECTS: Helper to centre main application window on desktop
     private void centreOnScreen() {
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
         int height = Toolkit.getDefaultToolkit().getScreenSize().height;
         setLocation((width - getWidth()) / 2, (height - getHeight()) / 2);
     }
 
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == saveButton) {
-            savePlaylist();
-        } else if (e.getSource() == loadButton) {
-            loadPlaylist();
-        } else if (e.getSource() == displaySongsButton) {
-            displayPlaylist(showSongs);
-        }
+    private String getSongName() {
+        return songNameInput;
     }
 
-    // starts the application
+    private String getArtist() {
+        return artistNameInput;
+    }
+
+    private String getSongAlbum() {
+        return albumNameInput;
+    }
+
+    private String getSongGenre() {
+        return genreNameInput;
+    }
+
+    private void setSongName(String name) {
+        this.songNameInput = name;
+    }
+
+    private void setArtist(String artist) {
+        artistNameInput = artist;
+    }
+
+    private void setSongAlbum(String album) {
+        albumNameInput = album;
+    }
+
+    private void setSongGenre(String genre) {
+        genreNameInput = genre;
+    }
+
+    // EFFECTS: starts the application
     public static void main(String[] args) {
         new MusicAppGUI();
     }

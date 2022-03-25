@@ -1,37 +1,25 @@
 {
     "songs": [
         {
-            "songName": "eventually",
-            "artist": "tame impala",
-            "album": "currently",
-            "genre": "alternative"
-        },
-        {
-            "songName": "space song",
-            "artist": "beach house",
-            "album": "depression cherry",
-            "genre": "indie"
-        },
-        {
-            "songName": "writer in the dark",
-            "artist": "lorde",
-            "album": "melodrama",
-            "genre": "melogenre"
-        },
-        {
-            "songName": "cleopatra",
-            "artist": "the lumineers",
-            "album": "cleopatra",
-            "genre": "indie folk"
-        },
-        {
-            "songName": "white ferrari",
+            "songName": "ivy",
             "artist": "frank ocean",
             "album": "blonde",
-            "genre": "indie"
+            "genre": "r&b"
+        },
+        {
+            "songName": "entropy",
+            "artist": "daniel caesar",
+            "album": "case study 01",
+            "genre": "r&b"
+        },
+        {
+            "songName": "photograph",
+            "artist": "jaden",
+            "album": "ctv3",
+            "genre": "r&b"
         }
     ],
-    "numSongs": 5,
-    "description": "best of the best!!",
-    "playlistName": "my favourite songs"
+    "numSongs": 3,
+    "description": "",
+    "playlistName": "Favourites"
 }
