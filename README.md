@@ -14,12 +14,22 @@ I'm a *big fan* of music -- I love discovering new songs, creating playlists, an
 taste. I wanted to create an application for people with a similar passion who would enjoy the features of my app.
 
 ## User Stories
-As a user, I will be able to:
+As a user, I will be able to...
+
+**In the console version of this app:**
 * add songs to my playlist and store details about its artist, 
 album, and genre
 * remove songs from my playlist
 * see a high-level overview of my playlist, particularly its name, 
 description, and the titles/artists of all the songs I've added to it
 * retreive the full details of a song when viewing my playlists
+* save my playlist to file
+* reload saved playlist from file
+
+**In the GUI version of this app:**
+* add songs to my playlist and store details about its artist,
+  album, and genre
+* see a high-level overview of my playlist, particularly
+  the titles/artists of all the songs I've added to it
 * save my playlist to file
 * reload saved playlist from file

@@ -1,12 +1,6 @@
 {
     "songs": [
         {
-            "songName": "washing machine heart",
-            "artist": "mitski",
-            "album": "be the cowboy",
-            "genre": "indie"
-        },
-        {
             "songName": "eventually",
             "artist": "tame impala",
             "album": "currently",
@@ -29,6 +23,12 @@
             "artist": "the lumineers",
             "album": "cleopatra",
             "genre": "indie folk"
+        },
+        {
+            "songName": "white ferrari",
+            "artist": "frank ocean",
+            "album": "blonde",
+            "genre": "indie"
         }
     ],
     "numSongs": 5,
