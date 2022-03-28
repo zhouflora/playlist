@@ -1,25 +1,37 @@
 {
     "songs": [
         {
-            "songName": "ivy",
-            "artist": "frank ocean",
-            "album": "blonde",
-            "genre": "r&b"
+            "songName": "Eventually",
+            "artist": "Tame Impala",
+            "album": "Currents",
+            "genre": "Indie"
         },
         {
-            "songName": "entropy",
-            "artist": "daniel caesar",
-            "album": "case study 01",
-            "genre": "r&b"
+            "songName": "Cleopatra",
+            "artist": "The Lumineers",
+            "album": "Cleopatra",
+            "genre": "Indie"
         },
         {
-            "songName": "photograph",
-            "artist": "jaden",
-            "album": "ctv3",
-            "genre": "r&b"
+            "songName": "Ivy",
+            "artist": "Frank Ocean",
+            "album": "Blonde",
+            "genre": "R&B"
+        },
+        {
+            "songName": "Space Song",
+            "artist": "Beach House",
+            "album": "Depression Cherry",
+            "genre": "Indie"
+        },
+        {
+            "songName": "Bloom",
+            "artist": "The Paper Kites",
+            "album": "Woodland",
+            "genre": "Indie"
         }
     ],
-    "numSongs": 3,
+    "numSongs": 5,
     "description": "",
     "playlistName": "Favourites"
 }

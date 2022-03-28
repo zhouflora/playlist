@@ -36,6 +36,23 @@ public class Song {
         return genre;
     }
 
+    //setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("songName", name);

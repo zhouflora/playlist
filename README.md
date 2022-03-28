@@ -33,3 +33,7 @@ description, and the titles/artists of all the songs I've added to it
   the titles/artists of all the songs I've added to it
 * save my playlist to file
 * reload saved playlist from file
+
+Photo Credits:
+Happy Cat: https://newtownsquarevet.com/happy-cat-month/
+Music Cat: https://www.npr.org/2015/03/07/391377916/these-tunes-are-music-to-your-cats-furry-ears
