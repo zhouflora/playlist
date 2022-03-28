@@ -15,7 +15,7 @@ import java.io.IOException;
 // Represents application's main, visual window frame.
 // Code heavily modeled after AlarmSystem, repo found here:
 // https://github.students.cs.ubc.ca/CPSC210/AlarmSystem.git
-// Also had code influenced by this post online:
+// Also wrote code influenced by this post online:
 // https://stackoverflow.com/questions/26151920///
 // java-save-user-input-as-a-string-in-a-jframe-gui
 // and code base built from https://www.youtube.com/watch?v=Kmgo00avvEw
