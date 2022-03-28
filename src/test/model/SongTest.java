@@ -20,4 +20,16 @@ class SongTest {
         assertEquals("Blonde", testSong.getAlbum());
         assertEquals("R&B", testSong.getGenre());
     }
+
+    @Test
+    void testSetSong() {
+        testSong.setName("777");
+        assertEquals("777", testSong.getName());
+        testSong.setArtist("Joji");
+        assertEquals("Joji", testSong.getArtist());
+        testSong.setAlbum("Nectar");
+        assertEquals("Nectar", testSong.getAlbum());
+        testSong.setGenre("Indie");
+        assertEquals("Indie",testSong.getGenre());
+    }
 }
