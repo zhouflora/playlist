@@ -164,7 +164,7 @@ public class MusicApp {
         for (int i = 0; i < playlist.getSongCollection().size(); i++) {
             System.out.printf("\t %s %s \n", ((i + 1) + ")"),
                     playlist.getSongCollection().get(i).getName() + " - "
-                    + playlist.getSongCollection().get(i).getArtist());
+                            + playlist.getSongCollection().get(i).getArtist());
         }
 
         displaySongDetails();

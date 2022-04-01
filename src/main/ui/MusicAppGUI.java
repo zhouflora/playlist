@@ -52,7 +52,6 @@ public class MusicAppGUI extends JFrame {
     private static final String JSON_STORE = "./data/playlist.json";
     private static JsonWriter jsonWriter;
     private static JsonReader jsonReader;
-    private static EventLog thelog;
 
     // EFFECTS: runs necessary fields and constructs the UI
     public MusicAppGUI() {
@@ -333,8 +332,8 @@ public class MusicAppGUI extends JFrame {
 
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {
-                for (Event e: EventLog.getInstance()) {
-                    System.out.println(e + "/n");
+                for (Event e : EventLog.getInstance()) {
+                    System.out.println(e + "\n");
                 }
             }
         }));

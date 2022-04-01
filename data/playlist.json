@@ -29,9 +29,15 @@
             "artist": "The Paper Kites",
             "album": "Woodland",
             "genre": "Indie"
+        },
+        {
+            "songName": "What Once Was",
+            "artist": "Her's",
+            "album": "Songs of Her's",
+            "genre": "Indie"
         }
     ],
-    "numSongs": 5,
+    "numSongs": 6,
     "description": "",
     "playlistName": "Favourites"
 }
