@@ -1,5 +1,6 @@
 package ui;
 
+import model.EventLog;
 import model.Playlist;
 import model.Song;
 import persistence.JsonReader;
@@ -11,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import static java.lang.Integer.parseInt;
 
 // Represents application's main, visual window frame.
 // Code heavily modeled after AlarmSystem, repo found here:
@@ -29,10 +32,12 @@ public class MusicAppGUI extends JFrame {
     private JButton submitArtist = new JButton("Submit");
     private JButton submitAlbum = new JButton("Submit");
     private JButton submitGenre = new JButton("Submit");
+    private JButton confirmRemove = new JButton("Confirm");
     private JTextField userInputS = new JTextField(10);
     private JTextField userInputArt = new JTextField(10);
     private JTextField userInputAlb = new JTextField(10);
     private JTextField userInputG = new JTextField(10);
+    private JTextField removalConfirmation = new JTextField(10);
     private String songNameInput;
     private String artistNameInput;
     private String albumNameInput;
@@ -46,6 +51,7 @@ public class MusicAppGUI extends JFrame {
     private static final String JSON_STORE = "./data/playlist.json";
     private static JsonWriter jsonWriter;
     private static JsonReader jsonReader;
+    private static EventLog theLog;
 
     // EFFECTS: runs necessary fields and constructs the UI
     public MusicAppGUI() {
@@ -80,12 +86,13 @@ public class MusicAppGUI extends JFrame {
     //  EFFECTS: Helper to add control buttons to the control panel
     private void addButtonPanel() {
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(5, 3));
+        buttonPanel.setLayout(new GridLayout(6, 3));
 
         songNameButtons(buttonPanel, userInputS);
         artistButtons(buttonPanel, userInputArt);
         albumButtons(buttonPanel, userInputAlb);
         genreButtons(buttonPanel, userInputG);
+        removeSongButtons(buttonPanel, removalConfirmation);
 
         buttonPanel.add(saveButton());
         buttonPanel.add(loadButton());
@@ -93,9 +100,28 @@ public class MusicAppGUI extends JFrame {
         controlPanel.add(buttonPanel, BorderLayout.WEST);
     }
 
+    // EFFECTS: Remove a song from a playlist
+    private void removeSongButtons(JPanel buttonPanel, JTextField removalConfirmation) {
+        buttonPanel.add(new JLabel("Enter # of song to remove"));
+        buttonPanel.add(removalConfirmation);
+        buttonPanel.add(confirmRemove);
+        confirmRemove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int number = parseInt(removalConfirmation.getText()) - 1;
+                    Song song = playlist.getSongCollection().get(number);
+                    playlist.removeSong(song);
+                } catch (IndexOutOfBoundsException ex) {
+                    // song is invalid
+                }
+            }
+        });
+    }
+
     // EFFECTS: Helper to create buttons for adding song name
     private void songNameButtons(JPanel buttonPanel, JTextField userInputS) {
-        buttonPanel.add(new JLabel("Enter song name"));
+        buttonPanel.add(new JLabel("Enter song name to add"));
         buttonPanel.add(userInputS);
         buttonPanel.add(submitSong);
         submitSong.addActionListener(new ActionListener() {
