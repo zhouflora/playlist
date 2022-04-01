@@ -27,7 +27,7 @@ description, and the titles/artists of all the songs I've added to it
 * reload saved playlist from file
 
 **In the GUI version of this app:**
-* add songs to my playlist and store details about its artist,
+* add/remove songs to my playlist and store details about its artist,
   album, and genre
 * see a high-level overview of my playlist, particularly
   the titles/artists of all the songs I've added to it

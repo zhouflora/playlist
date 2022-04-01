@@ -1,5 +1,6 @@
 package ui;
 
+import model.Event;
 import model.EventLog;
 import model.Playlist;
 import model.Song;
@@ -21,7 +22,7 @@ import static java.lang.Integer.parseInt;
 // Also wrote code influenced by this post online:
 // https://stackoverflow.com/questions/26151920///
 // java-save-user-input-as-a-string-in-a-jframe-gui
-// and code base built from https://www.youtube.com/watch?v=Kmgo00avvEw
+// code base built from https://www.youtube.com/watch?v=Kmgo00avvEw
 public class MusicAppGUI extends JFrame {
     private JLabel image;
     private JButton saveButton;
@@ -51,7 +52,7 @@ public class MusicAppGUI extends JFrame {
     private static final String JSON_STORE = "./data/playlist.json";
     private static JsonWriter jsonWriter;
     private static JsonReader jsonReader;
-    private static EventLog theLog;
+    private static EventLog thelog;
 
     // EFFECTS: runs necessary fields and constructs the UI
     public MusicAppGUI() {
@@ -324,8 +325,18 @@ public class MusicAppGUI extends JFrame {
         genreNameInput = genre;
     }
 
+    // shutdown hook code from https://stackoverflow.com/questions/63687/calling
+    // -function-when-program-exits-in-java
     // EFFECTS: starts the application
     public static void main(String[] args) {
         new MusicAppGUI();
+
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                for (Event e: EventLog.getInstance()) {
+                    System.out.println(e + "/n");
+                }
+            }
+        }));
     }
 }

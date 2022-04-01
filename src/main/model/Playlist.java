@@ -59,6 +59,9 @@ public class Playlist implements Writable {
         Song song = new Song(name, artist, album, genre);
         collection.add(song);
         numSongs = numSongs + 1;
+
+        EventLog.getInstance().logEvent(new Event("Song was added to playlist with Name: " + name
+                + ", Artist: " + artist + ", Album: " + album + ", Genre: " + genre));
     }
 
     // MODIFIES: this
@@ -67,6 +70,7 @@ public class Playlist implements Writable {
     public void removeSong(Song song) {
         collection.remove(song);
         numSongs = numSongs - 1;
+        EventLog.getInstance().logEvent(new Event("Song was removed from playlist."));
     }
 
     // EFFECTS: from a given name, shows the details of the corresponding song,
@@ -96,7 +100,7 @@ public class Playlist implements Writable {
                 return collection.size();
             }
         };
-
+        EventLog.getInstance().logEvent(new Event("Playlist was viewed."));
         return listOfSongNames;
     }
 
