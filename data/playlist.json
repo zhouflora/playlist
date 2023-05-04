@@ -1,43 +1,6 @@
 {
-    "songs": [
-        {
-            "songName": "Eventually",
-            "artist": "Tame Impala",
-            "album": "Currents",
-            "genre": "Indie"
-        },
-        {
-            "songName": "Cleopatra",
-            "artist": "The Lumineers",
-            "album": "Cleopatra",
-            "genre": "Indie"
-        },
-        {
-            "songName": "Ivy",
-            "artist": "Frank Ocean",
-            "album": "Blonde",
-            "genre": "R&B"
-        },
-        {
-            "songName": "Space Song",
-            "artist": "Beach House",
-            "album": "Depression Cherry",
-            "genre": "Indie"
-        },
-        {
-            "songName": "Bloom",
-            "artist": "The Paper Kites",
-            "album": "Woodland",
-            "genre": "Indie"
-        },
-        {
-            "songName": "What Once Was",
-            "artist": "Her's",
-            "album": "Songs of Her's",
-            "genre": "Indie"
-        }
-    ],
-    "numSongs": 6,
+    "songs": [],
+    "numSongs": 0,
     "description": "",
     "playlistName": "Favourites"
 }
